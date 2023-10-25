@@ -17,8 +17,8 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         log.info(metaObject.toString());
         metaObject.setValue("createTime", LocalDateTime.now());
         metaObject.setValue("updateTime", LocalDateTime.now());
-        metaObject.setValue("createUser", new long(1));
-        metaObject.setValue("updateUser", LocalDateTime.now());
+        metaObject.setValue("createUser", BaseContext.getCurrentId());
+        metaObject.setValue("updateUser", BaseContext.getCurrentId());
     }
 
     @Override
@@ -29,9 +29,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         long id = Thread.currentThread().getId();
         log.info("线程id为：{}",id);
 
-        metaObject.setValue("createTime", LocalDateTime.now());
         metaObject.setValue("updateTime", LocalDateTime.now());
-        metaObject.setValue("createUser", new long(1));
-        metaObject.setValue("updateUser", LocalDateTime.now());
+        metaObject.setValue("updateUser", BaseContext.getCurrentId());
     }
 }
